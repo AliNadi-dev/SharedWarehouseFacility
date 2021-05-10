@@ -36,6 +36,8 @@ def Parse(model,randsol):
     
 # %% decompose assignment into the level and calculate cordinates of the areas 
 
+
+
     L={}
     X0={}
     Xend={}
