@@ -35,6 +35,7 @@ def Parse(model,randsol):
     To=np.concatenate((delimiterposition,[Z+l-1]),axis=0)
     
 # %% decompose assignment into the level and calculate cordinates of the areas 
+
     L={}
     X0={}
     Xend={}
