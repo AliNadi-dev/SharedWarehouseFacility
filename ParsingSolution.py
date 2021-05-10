@@ -55,6 +55,9 @@ def Parse(model,randsol):
                 if j==0:
                     
                     Yend[str(j)][k]=Y0[str(j)][k]+S/(n[L[str(j)][k]-1]*v)
+                    if k ==len(L[str(j)])-2:
+                        Xend[str(j)][k+1]=X0[str(j)][k+1]+n[L[str(j)][k+1]-1]*w                     
+                        Yend[str(j)][k+1]=Y0[str(j)][k+1]+S/(n[L[str(j)][k+1]-1]*v)
                 else:
                     Y0[str(j)][k]=min(Yend[str(j-1)])
                     Yend[str(j)][k]=Y0[str(j)][k]+S/(n[L[str(j)][k]-1]*v)  
