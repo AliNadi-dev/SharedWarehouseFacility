@@ -35,9 +35,6 @@ def Parse(model,randsol):
     To=np.concatenate((delimiterposition,[Z+l-1]),axis=0)
     
 # %% decompose assignment into the level and calculate cordinates of the areas 
-
-
-
     L={}
     X0={}
     Xend={}
@@ -52,22 +49,31 @@ def Parse(model,randsol):
         Yend[str(j)]=np.zeros(len(L[str(j)]))
 
         if L[str(j)].size >0:
-            for k in range(len(L[str(j)])-1):
-                X0[str(j)][k+1]=X0[str(j)][k]+n[L[str(j)][k]-1]*w
-                Xend[str(j)][k]=X0[str(j)][k]+n[L[str(j)][k]-1]*w
+            if L[str(j)].size ==1:
+                Xend[str(j)][0]=X0[str(j)][0]+n[L[str(j)][0]-1]*w
                 if j==0:
-                    
-                    Yend[str(j)][k]=Y0[str(j)][k]+(S/(n[L[str(j)][k]-1])+(2*v))
-                    if k ==len(L[str(j)])-2:
-                        Xend[str(j)][k+1]=X0[str(j)][k+1]+n[L[str(j)][k+1]-1]*w                     
-                        Yend[str(j)][k+1]=Y0[str(j)][k+1]+(S/(n[L[str(j)][k+1]-1])+(2*v))
+                    Yend[str(j)][0]=Y0[str(j)][0]+(S/(n[L[str(j)][0]-1])+(2*v))
                 else:
-                    Y0[str(j)][k]=min(Yend[str(j-1)])
-                    Yend[str(j)][k]=Y0[str(j)][k]+(S/(n[L[str(j)][k]-1])+(2*v))  
-                    if k ==len(L[str(j)])-2:
-                        Xend[str(j)][k+1]=X0[str(j)][k+1]+n[L[str(j)][k+1]-1]*w
-                        Y0[str(j)][k+1]=min(Yend[str(j-1)])
-                        Yend[str(j)][k+1]=Y0[str(j)][k+1]+(S/(n[L[str(j)][k+1]-1])+(2*v))
+                    Y0[str(j)][0]=min(Yend[str(j-1)])
+                    Yend[str(j)][0]=Y0[str(j)][0]+(S/(n[L[str(j)][0]-1])+(2*v))  
+            else:
+                for k in range(len(L[str(j)])-1):
+                    X0[str(j)][k+1]=X0[str(j)][k]+n[L[str(j)][k]-1]*w
+                    Xend[str(j)][k]=X0[str(j)][k]+n[L[str(j)][k]-1]*w
+                    if j==0:
+                        Yend[str(j)][k]=Y0[str(j)][k]+(S/(n[L[str(j)][k]-1])+(2*v))
+
+                        if k ==len(L[str(j)])-2:
+                            Xend[str(j)][k+1]=X0[str(j)][k+1]+n[L[str(j)][k+1]-1]*w                     
+                            Yend[str(j)][k+1]=Y0[str(j)][k+1]+(S/(n[L[str(j)][k+1]-1])+(2*v))
+                    else:
+                        Y0[str(j)][k]=min(Yend[str(j-1)])
+                        Yend[str(j)][k]=Y0[str(j)][k]+(S/(n[L[str(j)][k]-1])+(2*v))  
+
+                        if k ==len(L[str(j)])-2:
+                            Xend[str(j)][k+1]=X0[str(j)][k+1]+n[L[str(j)][k+1]-1]*w
+                            Y0[str(j)][k+1]=min(Yend[str(j-1)])
+                            Yend[str(j)][k+1]=Y0[str(j)][k+1]+(S/(n[L[str(j)][k+1]-1])+(2*v))
 
  # %%           
                 
