@@ -8,12 +8,12 @@ Created on Wed May  5 01:10:02 2021
 @author: anadinajafabad
 
 """
-
+#%%
 import numpy as np 
 import pandas as pd
-
+#%%
 def Parse(model,randsol):
-
+#%%
     Z=model['Z']
     w=model['aisle_width']
     v=model['cross_aisle_width']
@@ -86,3 +86,5 @@ def Parse(model,randsol):
                         
 
     return sol
+# %%
+sol=Parse(model, randsol)
