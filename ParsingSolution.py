@@ -34,7 +34,7 @@ def Parse(model,randsol):
 
     To=np.concatenate((delimiterposition,[Z+l-1]),axis=0)
     
-# %% decompose assignment into the level and calculate cordinates of the areas 
+# %% decompose assignment into the levels and calculate coordinates of the areas 
     L={}
     X0={}
     Xend={}
@@ -75,10 +75,10 @@ def Parse(model,randsol):
                             Y0[str(j)][k+1]=min(Yend[str(j-1)])
                             Yend[str(j)][k+1]=Y0[str(j)][k+1]+(S/(n[L[str(j)][k+1]-1])+(2*v))
 
- # %%           
+ # %%calculate the violation 
                 
 
                         
 
     return {}
-            
+    s=Parse(model, randsol)
