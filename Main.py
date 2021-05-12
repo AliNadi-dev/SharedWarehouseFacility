@@ -13,3 +13,4 @@ randsol=RandomSolution.Create(model)
 # %% parse solution 
 sol=ParsingSolution.Parse(model,randsol)
 # %%
+print(sol)
