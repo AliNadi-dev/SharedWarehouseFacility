@@ -42,12 +42,18 @@ def Parse(model,randsol):
     Y0={}
     Yend={}
 
-    for j in range(l):   
+    for j in range(l): 
         L[str(j)]=q[From[j]:To[j]]
-        X0[str(j)]=np.zeros(len(L[str(j)]))
-        Xend[str(j)]=np.zeros(len(L[str(j)]))
-        Y0[str(j)]=np.zeros(len(L[str(j)]))
-        Yend[str(j)]=np.zeros(len(L[str(j)]))
+        if len(L[str(j)])==0:
+            X0[str(j)]=np.zeros(1)
+            Xend[str(j)]=np.zeros(1)
+            Y0[str(j)]=np.zeros(1)
+            Yend[str(j)]=np.zeros(1)
+        else:            
+            X0[str(j)]=np.zeros(len(L[str(j)]))
+            Xend[str(j)]=np.zeros(len(L[str(j)]))
+            Y0[str(j)]=np.zeros(len(L[str(j)]))
+            Yend[str(j)]=np.zeros(len(L[str(j)]))
 
         if L[str(j)].size >0:
             if L[str(j)].size ==1:
