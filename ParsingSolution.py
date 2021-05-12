@@ -81,6 +81,9 @@ def Parse(model,randsol):
                             Xend[str(j)][k+1]=X0[str(j)][k+1]+n[L[str(j)][k+1]-1]*w
                             Y0[str(j)][k+1]=min(Yend[str(j-1)])
                             Yend[str(j)][k+1]=Y0[str(j)][k+1]+(S/(n[L[str(j)][k+1]-1])+(2*v))
+        else:
+            Y0[str(j)][k]=min(Yend[str(j-1)])
+            Yend[str(j)][0]=Y0[str(j)][0]+(S/(n[L[str(j)][0]-1])+(2*v))
 
  # %%calculate the violation 
     sol['X0']=X0
